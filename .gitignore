@@ -1,0 +1,24 @@
+# Virtual environment
+venv/
+
+# Data (rebuilt by setup.sh)
+data/
+subset.yaml
+
+# Model weights (downloaded automatically by Ultralytics)
+*.pt
+
+# Ultralytics output
+runs/
+
+# Python
+__pycache__/
+*.pyc
+
+# Corrupted images, if we save them to disk
+corrupted/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
