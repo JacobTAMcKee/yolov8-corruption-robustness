@@ -1,6 +1,6 @@
 # Robustness of YOLOv8 to Image Corruptions
 
-COMP 4102 final project. Team: [names and student numbers]
+COMP 4102 Final Project
 
 We measure how much the accuracy of pretrained YOLOv8 object detectors (nano and
 small) drops when COCO images are corrupted with Gaussian blur, Gaussian noise,
@@ -49,7 +49,6 @@ Results are written to `results/`.
 | `check_corruptions.py` | Example image under every corruption and level | `results/corruption_examples.png` |
 | `run_experiments.py` | Evaluates yolov8n and yolov8s on the clean set and the 12 corrupted sets | `results/results.csv` |
 | `make_plots.py` | Relative drops and mAP-versus-severity plots | `results/summary.csv`, `results/map_vs_severity.png`, `results/relative_map_vs_severity.png` |
-| `metrics_pct_of_clean.py` | mAP50, precision, and recall with their drops | `results/metrics_pct_of_clean.csv` |
 | `find_failures.py` | Clean vs. corrupted predictions for the images with the largest change in detections | `results/failures/*.jpg` |
 | `eval_clean.py` | Optional quick check: clean-image mAP only (yolov8s should give about 0.457 mAP50-95) | console output |
 

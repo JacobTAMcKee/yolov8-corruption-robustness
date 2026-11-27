@@ -40,7 +40,6 @@ step "Build the 12 corrupted image sets"            python make_corrupted.py
 step "Corruption example figure"                    python check_corruptions.py
 step "Evaluate yolov8n and yolov8s (13 sets each)"  python run_experiments.py
 step "Plots and summary table"                      python make_plots.py
-step "mAP50, precision, recall table"               python metrics_pct_of_clean.py
 if [ "$SKIP_FAILURES" -eq 0 ]; then
     step "Failure-case figures"                     python find_failures.py
 fi
