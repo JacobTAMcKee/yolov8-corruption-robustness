@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 model = YOLO("yolov8s.pt")
 CONF = 0.25                                   # a detection counts if confidence >= 0.25
-CASES = ["blur_21", "noise_50", "dark_0.2", "jpeg_20"]
+CASES = ["blur_21, noise_50, dark_0.2, jpeg_5"]
 N_LOST = 3                                    # images with the most lost detections, per case
 CLEAN_DIR = Path("data/subset/images/val")
 OUT = Path("results/failures")
@@ -25,11 +25,12 @@ def count_detections(paths):
 
 
 def draw(path, title):
-    """Run the model on one image and return it with boxes drawn and a title banner."""
+    """Run the model on one image and return it with boxes drawn and a title banner above."""
     r = model.predict(str(path), conf=CONF, imgsz=640, device=0, verbose=False)[0]
     img = r.plot()
-    cv2.rectangle(img, (0, 0), (img.shape[1], 32), (0, 0, 0), -1)
-    cv2.putText(img, f"{title}: {len(r.boxes)} detections", (8, 23),
+    # Add a 36-pixel black strip above the image instead of drawing over it
+    img = cv2.copyMakeBorder(img, 36, 0, 0, 0, cv2.BORDER_CONSTANT, value=(0, 0, 0))
+    cv2.putText(img, f"{title}: {len(r.boxes)} detections", (8, 26),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
     return img
 
