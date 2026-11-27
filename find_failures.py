@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 model = YOLO("yolov8s.pt")
 CONF = 0.25                                   # a detection counts if confidence >= 0.25
-CASES = ["blur_21, noise_50, dark_0.2, jpeg_5"]
+CASES = ["blur_21", "noise_50", "dark_0.2", "jpeg_5"]
 N_LOST = 3                                    # images with the most lost detections, per case
 CLEAN_DIR = Path("data/subset/images/val")
 OUT = Path("results/failures")
